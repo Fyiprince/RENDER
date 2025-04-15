@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Buster</title>
+    <style>
+        /* Dark Theme */
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #f39c12;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #aaa;
+            animation: slideIn 2s ease-in-out;
+        }
+
+        /* Animation for h1 */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animation for p */
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Button Style */
+        .btn {
+            background-color: #f39c12;
+            color: white;
+            padding: 12px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Welcome to Fake News Buster!</h1>
+        <p>We are here to bust the fake news and keep the truth alive.</p>
+        <form action="/predict" method="post">
+            <textarea name="news_text" rows="5" cols="50" placeholder="Enter the news text..."></textarea><br>
+            <button type="submit">Check News</button>
+        </form>
+        
+        {% if prediction_text %}
+        <h3>Prediction: {{ prediction_text }}</h3>
+        {% endif %}
+        
+        <button class="btn">Start Detecting</button>
+
+    </div>
+</body>
+</html>
